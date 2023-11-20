@@ -5,7 +5,7 @@ public class Server {
 
     static public void startServer(){
         try {
-            ServerSocket ss = new ServerSocket(66666);
+            ServerSocket ss = new ServerSocket(6666);
             Socket s = ss.accept();
             DataInputStream dis=new DataInputStream(s.getInputStream());
             String  str=(String)dis.readUTF();
