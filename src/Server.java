@@ -3,27 +3,16 @@ import java.net.*;
 
 public class Server {
 
-    static public void startServer() {
+    static public void startServer(){
         try {
-            ServerSocket ss = new ServerSocket(3333);
+            ServerSocket ss = new ServerSocket(66666);
             Socket s = ss.accept();
-            DataInputStream din = new DataInputStream(s.getInputStream());
-            DataOutputStream dout = new DataOutputStream(s.getOutputStream());
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-            String str = "", str2 = "";
-            while (!str.equals("stop")) {
-                str = din.readUTF();
-                System.out.println("client says: " + str);
-                str2 = br.readLine();
-                dout.writeUTF(str2);
-                dout.flush();
-            }
-            din.close();
-            s.close();
+            DataInputStream dis=new DataInputStream(s.getInputStream());
+            String  str=(String)dis.readUTF();
+            System.out.println("message= "+str);
             ss.close();
-        } catch (IOException e) {
-            System.out.println("Oh no");
+        }catch (IOException e){
+            System.out.println("WREEEEEEE");
         }
     }
 }
