@@ -10,8 +10,10 @@ public class Main {
                 field.setGameBoard();
                 field.printGameBoard();
                 while (!field.checkWinner()){
+                    field.printGameBoard();
                     String localMove = Client.myClient();
                     field.localPlay(localMove);
+                    field.printGameBoard();
                     String onlineMove = Server.startServer();
                     field.onlinePlay(onlineMove);
                 }
@@ -20,10 +22,11 @@ public class Main {
             case "2":
                 TicTacToe field1 = new TicTacToe();
                 field1.setGameBoard();
-                field1.printGameBoard();
                 while (!field1.checkWinner()){
+                    field1.printGameBoard();
                     String onlineMove = Server.startServer();
                     field1.onlinePlay(onlineMove);
+                    field1.printGameBoard();
                     String localMove = Client.myClient();
                     field1.localPlay(localMove);
                 }

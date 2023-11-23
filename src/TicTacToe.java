@@ -6,7 +6,7 @@ public class TicTacToe {
         public void setGameBoard(){
             for (int i = 0; i < gameBoard.length; i++) {
                 for (int j = 0; j < gameBoard[i].length; j++) {
-                    gameBoard[i][j] = "F";
+                    gameBoard[i][j] = "-";
                 }
             }
         }
