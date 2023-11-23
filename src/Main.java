@@ -18,7 +18,15 @@ public class Main {
 
         break;
             case "2":
-
+                TicTacToe field1 = new TicTacToe();
+                field1.setGameBoard();
+                field1.printGameBoard();
+                while (field1.checkWinner()){
+                    String onlineMove = Server.startServer();
+                    field1.onlinePlay(onlineMove);
+                    String localMove = Client.myClient();
+                    field1.localPlay(localMove);
+                }
         break;
         }
     }
