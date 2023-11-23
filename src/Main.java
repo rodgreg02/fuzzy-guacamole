@@ -9,7 +9,7 @@ public class Main {
                 TicTacToe field = new TicTacToe();
                 field.setGameBoard();
                 field.printGameBoard();
-                while (field.checkWinner()){
+                while (!field.checkWinner()){
                     String localMove = Client.myClient();
                     field.localPlay(localMove);
                     String onlineMove = Server.startServer();
@@ -21,7 +21,7 @@ public class Main {
                 TicTacToe field1 = new TicTacToe();
                 field1.setGameBoard();
                 field1.printGameBoard();
-                while (field1.checkWinner()){
+                while (!field1.checkWinner()){
                     String onlineMove = Server.startServer();
                     field1.onlinePlay(onlineMove);
                     String localMove = Client.myClient();
