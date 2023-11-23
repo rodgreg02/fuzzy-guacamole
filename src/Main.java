@@ -27,12 +27,12 @@ public class Main {
                 TicTacToe field1 = new TicTacToe();
                 field1.setGameBoard();
                 while (!field1.checkWinner()){
-                    field.printGameBoard();
+                    field1.printGameBoard();
                     String onlineMove = Server.receivedMessage;
-                    field.onlinePlay(onlineMove);
-                    field.printGameBoard();
+                    field1.onlinePlay(onlineMove);
+                    field1.printGameBoard();
                     String localMove = Client.myClient(scanner.next());
-                    field.localPlay(localMove);
+                    field1.localPlay(localMove);
                 }
         break;
         }
