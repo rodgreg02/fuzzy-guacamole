@@ -1,24 +1,41 @@
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
-
 public class Client {
-
-    static public String myClient() {
+    private static Socket socket;
+    private static DataOutputStream dout;
+    static {
         try {
-            Scanner scanner = new Scanner(System.in);
-            String move = scanner.next();
-            Socket s = new Socket("192.168.43.153", 69);
-            DataOutputStream dout = new DataOutputStream(s.getOutputStream());
+            // Inicialize a conexão do socket uma vez durante a inicialização da classe
+            socket = new Socket("192.168.43.153", 69);
+            dout = new DataOutputStream(socket.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    static public String myClient(String move) {
+        try {
+            // Envie a mensagem
             dout.writeUTF(move);
             dout.flush();
-            dout.close();
-            s.close();
+
             return move;
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
+    // Feche a conexão do socket quando não for mais necessária
+    static public void closeConnection() {
+        try {
+            if (dout != null) {
+                dout.close();
+            }
+            if (socket != null) {
+                socket.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
-
